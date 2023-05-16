@@ -14,13 +14,20 @@ mensajes = tk.StringVar(ventana, value="")
 
 def Calcular():
     global mensajes
-    try:
-        if voltaje.get() == 0:
-            voltaje.set(intensidad.get()*resistencia.get())
-        elif intensidad.get() == 0:
-            intensidad.set(voltaje.get()/resistencia.get())
-        elif resistencia.get() == 0:
-            resistencia.set(voltaje.get()/intensidad.get())
+    try:                                    # Comprobamos que se introducise un float válido
+        v = float(voltaje.get())
+        i = float(intensidad.get())
+        r = float(resistencia.get())
+    except:
+        mensajes.set("Valor no válido")
+        return
+    try:                                    # Comprobamos a exception si se divide entre '0'
+        if v == 0:
+            voltaje.set(i * r)
+        elif i == 0:
+            intensidad.set(v / r)
+        elif r == 0:
+            resistencia.set(v / i)
         else:
             mensajes.set(
                 "Al menos un dos campos debe ser '0' para poder efectuar o cálculo")
@@ -34,6 +41,8 @@ def Salir():
     quit()
 
 # Estructurar un menú
+
+
 def EstructurarMenu():
     label = ventana.geometry("700x450")
 
