@@ -34,12 +34,6 @@ def Salir():
     quit()
 
 # Estructurar un menú
-
-
-labelEntry = {"Voltaje (V)": voltaje, "Intensidad (A)": intensidad,
-              "Resistencia (Ω)": resistencia}
-
-
 def EstructurarMenu():
     label = ventana.geometry("700x450")
 
